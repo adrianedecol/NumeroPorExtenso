@@ -13,7 +13,7 @@ public class NumeroPorExtensoService {
 	private final String[] LISTA_NUMEROS_0_a_9 = {"zero", "um", "dois", "três", "quatro", "cinco", 
 			"seis", "sete", "oito", "nove"};
 	private final String[] LISTA_NUMEROS_10_a_19 = {"dez", "onze", "doze", "treze", "quatorze", "quinze", 
-			"dezesseis", "dezesette", "dezoito", "dezenove"};
+			"dezesseis", "dezesete", "dezoito", "dezenove"};
 	private final String[] LISTA_DEZENAS = {"dez", "vinte", "trinta", "quarenta", "cinquenta", 
 			"sessenta", "setenta", "oitenta", "noventa"};
 	private final String[] LISTA_CENTENAS = {"cento", "duzentos", "trezentos", "quatrocentos", "quinhentos", 
