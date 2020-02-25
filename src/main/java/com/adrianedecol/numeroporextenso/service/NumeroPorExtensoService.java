@@ -1,8 +1,5 @@
 package com.adrianedecol.numeroporextenso.service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,20 +26,12 @@ public class NumeroPorExtensoService {
 	private final String MIL = " mil";
 	private final String MENOS_SIMBOLO = "-";
 	private final String VAZIO = "";
-	private String convertido;
 	
 	public NumeroPorExtenso retornarVersaoPorExtenso (Long id) {
 		porExtenso.setExtenso(converterNumeroParaExtenso(id));
 		return porExtenso;		
 	}
 	
-	/**
-	 * @TODO
-	 * Tratamento de números com 4 dígitos -- OK
-	 * Tratamento de casas com 0
-	 * Tratamento dos números de 11 a 19
-	 * 
-	 */
 	private String converterNumeroParaExtenso(Long id) {
 		String idComoString = id.toString();
 		String valorPorExtenso = FORA_DO_LIMITE;
@@ -60,7 +49,7 @@ public class NumeroPorExtensoService {
 				Integer numero = Integer.parseInt(milhares.substring(0, 1));
 				Integer numero2 = Integer.parseInt(milhares.substring(1, 2));
 				if (Integer.parseInt(idComoString) % 1000 == 0) {
-					valorPorExtenso += (ehEntre10e19? LISTA_NUMEROS_10_a_19[numero-1]:LISTA_DEZENAS[numero-1]).concat(MIL);
+					valorPorExtenso += (ehEntre10e19? LISTA_NUMEROS_10_a_19[numero2]:LISTA_DEZENAS[numero-1]).concat(MIL);
 					return valorPorExtenso;					
 				}
 				valorPorExtenso += (ehEntre10e19? LISTA_NUMEROS_10_a_19[numero2]:LISTA_DEZENAS[numero-1].concat(E).concat(LISTA_NUMEROS_0_a_9[numero2])).concat(MIL).concat(E);
@@ -96,7 +85,7 @@ public class NumeroPorExtensoService {
 				Integer numero = Integer.parseInt(dezenas.substring(0, 1));
 				if (numero != 0) {					
 					if (Integer.parseInt(idComoString) % 10 == 0) {
-						valorPorExtenso += (ehEntre10e19? LISTA_NUMEROS_10_a_19[numero-1]:LISTA_DEZENAS[numero-1]);
+						valorPorExtenso += (ehEntre10e19? LISTA_NUMEROS_10_a_19[Integer.parseInt(dezenas.substring(1, 2))]:LISTA_DEZENAS[numero-1]);
 						return valorPorExtenso;					
 					}
 					valorPorExtenso += (ehEntre10e19? LISTA_NUMEROS_10_a_19[Integer.parseInt(dezenas.substring(1, 2))]:LISTA_DEZENAS[numero-1].concat(E));					
@@ -112,7 +101,7 @@ public class NumeroPorExtensoService {
 		return valorPorExtenso;
 	}
 	
-	private Map<String, Integer> converterNumeroParaExtenso2 (Long id) {
+	/*private Map<String, Integer> converterNumeroParaExtenso2 (Long id) {
 		//String valorPorExtenso = VAZIO;
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		//List<Integer> lista = new ArrayList<Integer>();
@@ -139,28 +128,6 @@ public class NumeroPorExtensoService {
 		map.put("D", dezenas);
 		map.put("U", unidades);
 		return map;
-	}
-	
-	private String converter (Long id) {
-		convertido = "";
-		Map<String, Integer> lista = converterNumeroParaExtenso2(id);	
-		for (Map.Entry<String, Integer> item: lista.entrySet()) {
-			if ((item.getKey().equalsIgnoreCase("M") || item.getKey().equalsIgnoreCase("C") || item.getKey().equalsIgnoreCase("D")) 
-					&& (item.getValue().compareTo(0)==0)) {
-				continue;
-			}
-			
-			if (item.getKey() == "M") {
-				if (item.getValue() >= 1 && item.getValue()<=9) {
-					convertido += LISTA_NUMEROS_0_a_9[item.getValue()];
-				} else if (item.getValue() >= 10 && item.getValue() <= 19) {
-					convertido += LISTA_NUMEROS_10_a_19[item.getValue()];
-				} else {
-					convertido += LISTA_DEZENAS[item.getValue()];
-				}
-			}
-		}
-		return convertido;
-	}
+	}*/
 	
 }
