@@ -1,8 +1,6 @@
-package com.adrianedecol.numeroporextenso.converter.impl;
+package com.adrianedecol.numeroporextenso.converter;
 
 import org.springframework.stereotype.Component;
-
-import com.adrianedecol.numeroporextenso.converter.ConverterParaExtenso;
 
 @Component
 public abstract class ConverterParaExtensoAbstract implements ConverterParaExtenso {

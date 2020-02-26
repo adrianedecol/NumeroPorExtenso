@@ -21,26 +21,30 @@ public class ConverterParaExtensoBuilder {
 	private ConverterParaExtensoUnidades converterUnidades;
 	
 	public ConverterParaExtensoBuilder milhares(int id) {
+		converterMilhares.setValor(id);
 		return this;
 	}
 
 	public ConverterParaExtensoBuilder centenas (int id) {
+		converterCentenas.setValor(id);
 		return this;
 	}
 	
 	public ConverterParaExtensoBuilder dezenas (int id) {
+		converterDezenas.setValor(id);
 		return this;
 	}
 	
 	public ConverterParaExtensoBuilder unidades (int id) {
+		converterUnidades.setValor(id);
 		return this;
 	}
 	
-	public String converter(int milhares, int centenas, int dezenas, int unidades) {
-		String milhar = converterMilhares.converter(milhares);
-		String dezena = converterDezenas.converter(dezenas);
-		String centena = converterCentenas.converter(centenas);
-		String unidade = converterUnidades.converter(unidades);
+	public String converter() {
+		String milhar = converterMilhares.converter();
+		String dezena = converterDezenas.converter();
+		String centena = converterCentenas.converter();
+		String unidade = converterUnidades.converter();
 		return milhar + " e " + centena + " e " + dezena + " e " + unidade;
 	}
 }

@@ -2,24 +2,21 @@ package com.adrianedecol.numeroporextenso.converter.impl;
 
 import org.springframework.stereotype.Component;
 
-import com.adrianedecol.numeroporextenso.converter.ConverterParaExtenso;
+import com.adrianedecol.numeroporextenso.converter.ConverterParaExtensoAbstract;
 
 @Component
-public class ConverterParaExtensoUnidades implements ConverterParaExtenso{
+public class ConverterParaExtensoUnidades extends ConverterParaExtensoAbstract {
 	
-	private final String[] LISTA_NUMEROS_0_a_9 = {"zero", "um", "dois", "três", "quatro", "cinco", 
-			"seis", "sete", "oito", "nove"};
-
 	/**
 	 * @@TODO
 	 * Tratar o zero sozinho
 	 */
 	@Override
-	public String converter(int id) {
-		if (id == 0) {
+	public String converter() {
+		if (getValor() == 0) {
 			return "";
 		}
-		return LISTA_NUMEROS_0_a_9[id];	
+		return LISTA_NUMEROS_0_a_9[getValor()];	
 	}
 
 }

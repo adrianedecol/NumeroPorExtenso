@@ -2,24 +2,21 @@ package com.adrianedecol.numeroporextenso.converter.impl;
 
 import org.springframework.stereotype.Component;
 
-import com.adrianedecol.numeroporextenso.converter.ConverterParaExtenso;
+import com.adrianedecol.numeroporextenso.converter.ConverterParaExtensoAbstract;
 
 @Component
-public class ConverterParaExtensoDezenas implements ConverterParaExtenso {
-
-	private final String[] LISTA_DEZENAS = {"dez", "vinte", "trinta", "quarenta", "cinquenta", 
-			"sessenta", "setenta", "oitenta", "noventa"};
+public class ConverterParaExtensoDezenas extends ConverterParaExtensoAbstract{
 	
 	/**
 	 * @@TODO
 	 * Tratar entre 10 e 19
 	 */
 	@Override
-	public String converter(int id) {
-		if (id == 0) {
+	public String converter() {
+		if (getValor() == 0) {
 			return "";
 		}
-		return LISTA_DEZENAS[id-1];
+		return LISTA_DEZENAS[getValor()-1];
 		
 	}
 
