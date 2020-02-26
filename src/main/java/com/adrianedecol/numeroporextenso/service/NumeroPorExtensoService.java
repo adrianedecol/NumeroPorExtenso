@@ -1,8 +1,12 @@
 package com.adrianedecol.numeroporextenso.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.adrianedecol.numeroporextenso.converter.ConverterParaExtensoBuilder;
 import com.adrianedecol.numeroporextenso.object.NumeroPorExtenso;
 
 @Service
@@ -26,9 +30,15 @@ public class NumeroPorExtensoService {
 	private final String MIL = " mil";
 	private final String MENOS_SIMBOLO = "-";
 	private final String VAZIO = "";
+	@Autowired
+	private ConverterParaExtensoBuilder builderConversao;
 	
 	public NumeroPorExtenso retornarVersaoPorExtenso (Long id) {
-		porExtenso.setExtenso(converterNumeroParaExtenso(id));
+		Map<String, Integer> valores = converterNumeroParaExtenso2(id);
+		String extenso = builderConversao.converter(valores.get("M"), valores.get("C"), 
+				valores.get("D"), valores.get("U"));
+		porExtenso.setExtenso(extenso);		
+		//porExtenso.setExtenso(converterNumeroParaExtenso(id));
 		return porExtenso;		
 	}
 	
@@ -101,7 +111,7 @@ public class NumeroPorExtensoService {
 		return valorPorExtenso;
 	}
 	
-	/*private Map<String, Integer> converterNumeroParaExtenso2 (Long id) {
+	private Map<String, Integer> converterNumeroParaExtenso2 (Long id) {
 		//String valorPorExtenso = VAZIO;
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		//List<Integer> lista = new ArrayList<Integer>();
@@ -128,6 +138,6 @@ public class NumeroPorExtensoService {
 		map.put("D", dezenas);
 		map.put("U", unidades);
 		return map;
-	}*/
+	}
 	
 }
