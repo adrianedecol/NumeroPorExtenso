@@ -25,9 +25,8 @@ public class ConverterParaExtensoBuilder {
 		return this;
 	}
 
-	public ConverterParaExtensoBuilder centenas (int id, boolean ehCem) {
+	public ConverterParaExtensoBuilder centenas (int id){
 		converterCentenas.setValor(id);
-		converterCentenas.setCem(ehCem);
 		return this;
 	}
 	
@@ -36,17 +35,33 @@ public class ConverterParaExtensoBuilder {
 		return this;
 	}
 	
-	public ConverterParaExtensoBuilder unidades (int id, boolean isZero) {
+	public ConverterParaExtensoBuilder unidades (int id) {
 		converterUnidades.setValor(id);
-		converterUnidades.setZero(isZero);
 		return this;
 	}
 	
-	public String converter() {
+	private void processarExcessoes(){
+		converterCentenas.setCem(converterDezenas.getValor()==0&&converterUnidades.getValor()==0);
+		converterUnidades.setZero(converterMilhares.getValor()==0&&converterCentenas.getValor()==0&&converterDezenas.getValor()==0);
+		int dezenasComUnidades = ((converterDezenas.getValor()*10)+converterUnidades.getValor());
+		if (dezenasComUnidades >= 10 && dezenasComUnidades <= 19) {
+			converterDezenas.setEntre10e19(true);
+			converterDezenas.setValorEntre10e19(dezenasComUnidades);
+			converterUnidades.setValor(0); //nesse caso todo o valor será tratado pelo converter das dezenas
+		}
+	}
+	
+	public String converter() {		
+		processarExcessoes();
 		String milhar = converterMilhares.converter();
 		String dezena = converterDezenas.converter();
 		String centena = converterCentenas.converter();
-		String unidade = converterUnidades.converter();
-		return milhar + " e " + centena + " e " + dezena + " e " + unidade;
+		String unidade = converterUnidades.converter();	
+		String eMilhar = (milhar.isEmpty()?"":" e ");
+		String eCentena = (dezena.isEmpty()&&unidade.isEmpty()?"":" e ");
+		String eDezena = (unidade.isEmpty()?"":" e ");
+		return milhar.concat(eMilhar).concat(centena).concat(eCentena).concat(dezena).concat(eDezena).concat(unidade);
+				
 	}
+	
 }

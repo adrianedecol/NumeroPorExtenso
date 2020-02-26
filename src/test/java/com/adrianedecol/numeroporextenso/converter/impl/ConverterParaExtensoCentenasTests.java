@@ -30,7 +30,7 @@ class ConverterParaExtensoCentenasTests {
 	}
 	
 	@Test
-	void converterQuatrocentosCentosParaExtenso() {
+	void converterQuatrocentosCentosParaExtenso(){
 		converter.setValor(4);
 		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("quatrocentos");

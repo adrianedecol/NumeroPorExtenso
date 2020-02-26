@@ -34,14 +34,18 @@ public class NumeroPorExtensoService {
 	@Autowired
 	private ConverterParaExtensoBuilder builderConversao;
 	
-	public NumeroPorExtenso retornarVersaoPorExtenso (Long id) {
+	public NumeroPorExtenso retornarVersaoPorExtenso (Long id) throws Exception {
+		if (id > 99999 || id < -99999) {
+			throw new Exception("Valor fora do limite [-99999,99999]");
+		}
 		Map<String, Integer> valores = converterNumeroParaExtenso2(id);
 		String extenso = builderConversao.milhares(valores.get("M"))
-				.centenas(valores.get("C"), (valores.get("D")==0&&valores.get("U")==0) )
-				.dezenas(valores.get("D"))
-				.unidades(valores.get("U"), (valores.get("M")==0&&valores.get("D")==0&&valores.get("U")==0))
-				.converter();
-		porExtenso.setExtenso(extenso);		
+					.centenas(valores.get("C"))
+					.dezenas(valores.get("D"))
+					.unidades(valores.get("U"))
+					.converter();
+			porExtenso.setExtenso(extenso);			
+				
 		//porExtenso.setExtenso(converterNumeroParaExtenso(id));
 		return porExtenso;		
 	}

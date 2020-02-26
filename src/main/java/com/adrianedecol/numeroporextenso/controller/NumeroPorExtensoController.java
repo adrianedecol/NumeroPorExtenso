@@ -19,7 +19,11 @@ public class NumeroPorExtensoController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<NumeroPorExtenso> retornarPorExtenso(@PathVariable Long id) {
-		return ResponseEntity.ok(service.retornarVersaoPorExtenso(id));
+		try {
+			return ResponseEntity.ok(service.retornarVersaoPorExtenso(id));
+		} catch (Exception e) {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 }
