@@ -14,7 +14,7 @@ public class NumeroPorExtensoService {
 
 	@Autowired
 	private NumeroPorExtenso porExtenso;
-	private final String[] LISTA_NUMEROS_0_a_9 = {"zero", "um", "dois", "três", "quatro", "cinco", 
+	/*private final String[] LISTA_NUMEROS_0_a_9 = {"zero", "um", "dois", "três", "quatro", "cinco", 
 			"seis", "sete", "oito", "nove"};
 	private final String[] LISTA_NUMEROS_10_a_19 = {"dez", "onze", "doze", "treze", "quatorze", "quinze", 
 			"dezesseis", "dezesete", "dezoito", "dezenove"};
@@ -29,7 +29,8 @@ public class NumeroPorExtensoService {
 	private final String E = " e ";
 	private final String MIL = " mil";
 	private final String MENOS_SIMBOLO = "-";
-	private final String VAZIO = "";
+	private final String VAZIO = "";*/
+	
 	@Autowired
 	private ConverterParaExtensoBuilder builderConversao;
 	
@@ -45,7 +46,7 @@ public class NumeroPorExtensoService {
 		return porExtenso;		
 	}
 	
-	private String converterNumeroParaExtenso(Long id) {
+	/*private String converterNumeroParaExtenso(Long id) {
 		String idComoString = id.toString();
 		String valorPorExtenso = FORA_DO_LIMITE;
 		int tamanho = idComoString.length();
@@ -112,12 +113,10 @@ public class NumeroPorExtensoService {
 			}
 		}
 		return valorPorExtenso;
-	}
+	}*/
 	
 	private Map<String, Integer> converterNumeroParaExtenso2 (Long id) {
-		//String valorPorExtenso = VAZIO;
 		Map<String, Integer> map = new HashMap<String, Integer>();
-		//List<Integer> lista = new ArrayList<Integer>();
 		int milhares = 0, centenas = 0, dezenas = 0, unidades = 0;
 		if (Math.signum(id.doubleValue()) == -1) {
 			id = id * - 1L;
