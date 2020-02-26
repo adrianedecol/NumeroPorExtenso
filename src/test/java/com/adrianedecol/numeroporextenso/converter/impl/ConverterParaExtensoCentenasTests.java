@@ -15,19 +15,31 @@ class ConverterParaExtensoCentenasTests {
 	
 	@Test
 	void converterCemParaExtenso() {
-		resultado = converter.converter(1);
+		converter.setValor(1);
+		converter.setCem(true);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("cem");
 	}
 	
 	@Test
+	void converterCentoParaExtenso() {
+		converter.setValor(1);
+		converter.setCem(false);
+		resultado = converter.converter();
+		assertThat(resultado).isEqualToIgnoringCase("cento");
+	}
+	
+	@Test
 	void converterQuatrocentosCentosParaExtenso() {
-		resultado = converter.converter(4);
+		converter.setValor(4);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("quatrocentos");
 	}
 	
 	@Test
 	void converterNovecentosParaExtenso() {
-		resultado = converter.converter(9);
+		converter.setValor(9);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("novecentos");
 	}
 }

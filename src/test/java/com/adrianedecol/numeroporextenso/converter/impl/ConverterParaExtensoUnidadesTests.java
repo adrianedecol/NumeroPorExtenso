@@ -15,19 +15,23 @@ class ConverterParaExtensoUnidadesTests {
 	
 	@Test
 	void converterUmParaExtenso() {
-		resultado = converter.converter(1);
+		converter.setValor(1);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("um");
 	}
 
 	@Test
 	void converteSeisParaExtenso() {
-		resultado = converter.converter(6);
+		converter.setValor(6);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("seis");
 	}
 	
 	@Test
 	void converteZeroParaExtenso() {
-		resultado = converter.converter(0);
+		converter.setValor(0);
+		converter.setZero(true);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("zero");
 	}
 }

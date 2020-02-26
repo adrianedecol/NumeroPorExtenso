@@ -15,31 +15,36 @@ class ConverterParaExtensoMilharesTests {
 	
 	@Test
 	void converterDezMilParaExtenso() {
-		resultado = converter.converter(10);
+		converter.setValor(10);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("dez mil");
 	}
 	
 	@Test
 	void converterCincoMilParaExtenso() {
-		resultado = converter.converter(5);
+		converter.setValor(5);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("cinco mil");
 	}
 	
 	@Test
 	void converterDezesseisMilParaExtenso() {
-		resultado = converter.converter(16);
+		converter.setValor(16);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("dezesseis mil");
 	}
 	
 	@Test
 	void converterQuarentaECincoMilParaExtenso() {
-		resultado = converter.converter(45);
+		converter.setValor(45);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("quarenta e cinco mil");
 	}
 	
 	@Test
 	void converterNoventaENoveMilParaExtenso() {
-		resultado = converter.converter(99);
+		converter.setValor(99);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("noventa e nove mil");
 	}
 }

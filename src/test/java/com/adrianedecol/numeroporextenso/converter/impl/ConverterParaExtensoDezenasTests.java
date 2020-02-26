@@ -15,19 +15,22 @@ class ConverterParaExtensoDezenasTests {
 	
 	@Test
 	void converterDezParaExtenso() {
-		resultado = converter.converter(1);
+		converter.setValor(1);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("dez");
 	}
 	
 	@Test
 	void converterTrintaParaExtenso() {
-		resultado = converter.converter(3);
+		converter.setValor(3);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("trinta");
 	}
 	
 	@Test
 	void converterNoventaParaExtenso() {
-		resultado = converter.converter(9);
+		converter.setValor(9);
+		resultado = converter.converter();
 		assertThat(resultado).isEqualToIgnoringCase("noventa");
 	}
 

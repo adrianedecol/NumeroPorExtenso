@@ -37,9 +37,9 @@ public class NumeroPorExtensoService {
 	public NumeroPorExtenso retornarVersaoPorExtenso (Long id) {
 		Map<String, Integer> valores = converterNumeroParaExtenso2(id);
 		String extenso = builderConversao.milhares(valores.get("M"))
-				.centenas(valores.get("C"))
+				.centenas(valores.get("C"), (valores.get("D")==0&&valores.get("U")==0) )
 				.dezenas(valores.get("D"))
-				.unidades(valores.get("U"))
+				.unidades(valores.get("U"), (valores.get("M")==0&&valores.get("D")==0&&valores.get("U")==0))
 				.converter();
 		porExtenso.setExtenso(extenso);		
 		//porExtenso.setExtenso(converterNumeroParaExtenso(id));

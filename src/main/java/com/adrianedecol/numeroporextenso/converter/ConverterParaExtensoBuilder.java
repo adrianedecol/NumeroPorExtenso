@@ -25,8 +25,9 @@ public class ConverterParaExtensoBuilder {
 		return this;
 	}
 
-	public ConverterParaExtensoBuilder centenas (int id) {
+	public ConverterParaExtensoBuilder centenas (int id, boolean ehCem) {
 		converterCentenas.setValor(id);
+		converterCentenas.setCem(ehCem);
 		return this;
 	}
 	
@@ -35,8 +36,9 @@ public class ConverterParaExtensoBuilder {
 		return this;
 	}
 	
-	public ConverterParaExtensoBuilder unidades (int id) {
+	public ConverterParaExtensoBuilder unidades (int id, boolean isZero) {
 		converterUnidades.setValor(id);
+		converterUnidades.setZero(isZero);
 		return this;
 	}
 	
