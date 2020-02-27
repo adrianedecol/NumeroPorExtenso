@@ -37,7 +37,7 @@ A aplicação pode ser executada manualmente atráves de linha de comando
 mvn clean install
 
 # Execução
-java -jar numeroporextenso-0.0.1-SNAPSHOT.jar
+java -jar target\numeroporextenso-0.0.1-SNAPSHOT.jar
 
 ```
 
