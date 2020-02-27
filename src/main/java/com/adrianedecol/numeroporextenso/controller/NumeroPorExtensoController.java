@@ -11,7 +11,7 @@ import com.adrianedecol.numeroporextenso.converter.NumeroPorExtenso;
 import com.adrianedecol.numeroporextenso.service.NumeroPorExtensoService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class NumeroPorExtensoController {
 
 	@Autowired
