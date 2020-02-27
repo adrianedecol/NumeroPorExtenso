@@ -43,10 +43,11 @@ public class ConverterParaExtensoBuilder {
 	
 	private void processarExcessoes(){
 		converterCentenas.setCem(converterCentenas.getValor()==1&&converterDezenas.getValor()==0&&converterUnidades.getValor()==0);
-		converterUnidades.setZero(converterMilhares.getValor()==0&&converterCentenas.getValor()==0&&converterDezenas.getValor()==0);
+		converterUnidades.setZero(converterMilhares.getValor()==0&&converterCentenas.getValor()==0&&converterDezenas.getValor()==0);		
 		int dezenasComUnidades = ((converterDezenas.getValor()*10)+converterUnidades.getValor());
-		if (dezenasComUnidades >= 10 && dezenasComUnidades <= 19) {
-			converterDezenas.setEntre10e19(true);
+		boolean entre10e19 = dezenasComUnidades >= 10 && dezenasComUnidades <= 19;
+		converterDezenas.setEntre10e19(entre10e19);
+		if (entre10e19) {
 			converterDezenas.setValorEntre10e19(dezenasComUnidades);
 			converterUnidades.setValor(0); //nesse caso todo o valor será tratado pelo converter das dezenas
 		}
