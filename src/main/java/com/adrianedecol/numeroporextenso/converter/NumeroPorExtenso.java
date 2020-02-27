@@ -1,4 +1,4 @@
-package com.adrianedecol.numeroporextenso.object;
+package com.adrianedecol.numeroporextenso.converter;
 
 import org.springframework.stereotype.Component;
 

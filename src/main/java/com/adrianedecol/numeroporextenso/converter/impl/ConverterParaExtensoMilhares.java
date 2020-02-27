@@ -22,6 +22,9 @@ public class ConverterParaExtensoMilhares extends ConverterParaExtensoAbstract {
 		if (primeiroDigito == 0) {
 			return (ehEntre10e19? LISTA_NUMEROS_10_a_19[segundoDigito]:LISTA_NUMEROS_0_a_9[segundoDigito]).concat(MIL);
 		}
+		if (segundoDigito == 0) {
+			return LISTA_DEZENAS[primeiroDigito-1].concat(MIL);
+		}
 		return (ehEntre10e19? LISTA_NUMEROS_10_a_19[segundoDigito]:LISTA_DEZENAS[primeiroDigito-1].concat(E).concat(LISTA_NUMEROS_0_a_9[segundoDigito])).concat(MIL);		
 	}
 

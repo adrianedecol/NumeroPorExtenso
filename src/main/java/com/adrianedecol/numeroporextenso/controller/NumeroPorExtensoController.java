@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.adrianedecol.numeroporextenso.object.NumeroPorExtenso;
+import com.adrianedecol.numeroporextenso.converter.NumeroPorExtenso;
 import com.adrianedecol.numeroporextenso.service.NumeroPorExtensoService;
 
 @RestController

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.adrianedecol.numeroporextenso.object.NumeroPorExtenso;
+import com.adrianedecol.numeroporextenso.converter.NumeroPorExtenso;
 import com.adrianedecol.numeroporextenso.service.NumeroPorExtensoService;
 
 @SpringBootTest
@@ -18,170 +18,158 @@ class NumeroPorExtensoServiceTests {
 	private NumeroPorExtenso resultado;
 	
 	@Test
-	void retornarNumeroCincoPorExtenso() {
+	void retornarNumeroCincoPorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(5L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("cinco");
 	}
 	
 	@Test
-	void retornarNumeroDezenovePorExtenso() {
+	void retornarNumeroDezenovePorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(19L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("dezenove");
 	}
 	
 	@Test
-	void retornarNumeroTrintaECincoPorExtenso() {
+	void retornarNumeroTrintaECincoPorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(35L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("trinta e cinco");
 	}
 
 	@Test
-	void retornarNumeroSetentaPorExtenso() {
+	void retornarNumeroSetentaPorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(70L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("setenta");
 	}
 	
 	@Test
-	void retornarNumeroQuinhentosEQuarentaESetePorExtenso() {
+	void retornarNumeroQuinhentosEQuarentaESetePorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(547L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("quinhentos e quarenta e sete");
 	}
 	
 	@Test
-	void retornarNumeroDoisMilETrezentosEOitentaENovePorExtenso() {
+	void retornarNumeroDoisMilETrezentosEOitentaENovePorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(2389L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("Dois Mil e Trezentos E Oitenta E Nove");
 	}
 	
 
 	@Test
-	void retornarNumeroVinteECincoMilESeiscentosETrintaEDoisPorExtenso() {
+	void retornarNumeroVinteECincoMilESeiscentosETrintaEDoisPorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(25632L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("Vinte E Cinco Mil E Seiscentos E Trinta E Dois");
 	}
 	
 	@Test
-	void retornarNumeroMenosCincoPorExtenso() {
+	void retornarNumeroMenosCincoPorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(-5L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("menos cinco");
 	}
 	
 	@Test
-	void retornarNumeroMenosDezenovePorExtenso() {
+	void retornarNumeroMenosDezenovePorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(-19L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("menos dezenove");
 	}
 	
 	@Test
-	void retornarNumeroMenosTrintaECincoPorExtenso() {
+	void retornarNumeroMenosTrintaECincoPorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(-35L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("menos trinta e cinco");
 	}
 
 	@Test
-	void retornarNumeroMenosSetentaPorExtenso() {
+	void retornarNumeroMenosSetentaPorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(-70L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("menos setenta");
 	}
 	
 	@Test
-	void retornarNumeroMenosQuinhentosEQuarentaESetePorExtenso() {
+	void retornarNumeroMenosQuinhentosEQuarentaESetePorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(-547L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("menos quinhentos e quarenta e sete");
 	}
 	
 	@Test
-	void retornarNumeroMenosDoisMilETrezentosEOitentaENovePorExtenso() {
+	void retornarNumeroMenosDoisMilETrezentosEOitentaENovePorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(-2389L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("menos Dois Mil e Trezentos E Oitenta E Nove");
 	}	
 
 	@Test
-	void retornarNumeroMenosVinteECincoMilESeiscentosETrintaEDoisPorExtenso() {
+	void retornarNumeroMenosVinteECincoMilESeiscentosETrintaEDoisPorExtenso() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(-25632L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("menos Vinte E Cinco Mil E Seiscentos E Trinta E Dois");
 	}
 	
 	@Test
-	void retornarValorNegativoForaDoIntervalo() {
-		resultado = service.retornarVersaoPorExtenso(-999999L);
-		assertThat(resultado.getExtenso()).contains("fora");
-	}
-	
-	@Test
-	void retornarValorPositivoForaDoIntervalo() {
-		resultado = service.retornarVersaoPorExtenso(999999L);
-		assertThat(resultado.getExtenso()).contains("fora");
-	}
-	
-	@Test
-	void retornarNumeroZero() {
+	void retornarNumeroZero() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(0L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("zero");
 	}
 	
 	@Test
-	void retornarNumeroQuinhentos() {
+	void retornarNumeroQuinhentos() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(500L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("quinhentos");
 	}
 	
 	@Test
-	void retornarNumeroTresMil() {
+	void retornarNumeroTresMil() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(3000L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("três mil");
 	}
 	
 	@Test
-	void retornarNumeroCinquentaMil() {
+	void retornarNumeroCinquentaMil() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(50000L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("cinquenta mil");
 	}
 	
 	@Test
-	void retornarNumeroUmMilECinquentaEQuatro() {
+	void retornarNumeroUmMilECinquentaEQuatro() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(1054L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("um mil e cinquenta e quatro");
 	}
 	
 	@Test
-	void retornarNumeroUmMilECem() {
+	void retornarNumeroUmMilECem() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(1100L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("um mil e cem");
 	}
 	
 	@Test
-	void retornarNumeroOitocentosEQuarenta() {
+	void retornarNumeroOitocentosEQuarenta() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(840L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("oitocentos e quarenta");
 	}
 	
 	@Test
-	void retornarNumeroUmMilEQuinhentosEQuatro() {
+	void retornarNumeroUmMilEQuinhentosEQuatro() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(1504L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("Um Mil E Quinhentos E Quatro");
 	}
 	
 	@Test
-	void retornarNumeroDezenove() {
+	void retornarNumeroDezenove() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(19L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("Dezenove");
 	}
 	
 	@Test
-	void retornarNumeroDezMilEQuinhentosEVinte() {
+	void retornarNumeroDezMilEQuinhentosEVinte() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(10520L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("Dez Mil E Quinhentos E Vinte");
 	}
 	
 	@Test
-	void retornarNumeroSessentaESeteMilEQuinhentosEDezessete() {
+	void retornarNumeroSessentaESeteMilEQuinhentosEDezessete() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(67517L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("sessenta e sete mil e quinhentos e dezesete");
 	}
 	
 	@Test
-	void retornarNumeroQuatorzeMil() {
+	void retornarNumeroQuatorzeMil() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(14000L);
 		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("quatorze mil");
 	}

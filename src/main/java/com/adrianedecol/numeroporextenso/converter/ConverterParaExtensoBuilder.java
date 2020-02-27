@@ -19,6 +19,7 @@ public class ConverterParaExtensoBuilder {
 	private ConverterParaExtensoDezenas converterDezenas;
 	@Autowired
 	private ConverterParaExtensoUnidades converterUnidades;
+	private boolean isNegativo;
 	
 	public ConverterParaExtensoBuilder milhares(int id) {
 		converterMilhares.setValor(id);
@@ -41,7 +42,7 @@ public class ConverterParaExtensoBuilder {
 	}
 	
 	private void processarExcessoes(){
-		converterCentenas.setCem(converterDezenas.getValor()==0&&converterUnidades.getValor()==0);
+		converterCentenas.setCem(converterCentenas.getValor()==1&&converterDezenas.getValor()==0&&converterUnidades.getValor()==0);
 		converterUnidades.setZero(converterMilhares.getValor()==0&&converterCentenas.getValor()==0&&converterDezenas.getValor()==0);
 		int dezenasComUnidades = ((converterDezenas.getValor()*10)+converterUnidades.getValor());
 		if (dezenasComUnidades >= 10 && dezenasComUnidades <= 19) {
@@ -51,16 +52,23 @@ public class ConverterParaExtensoBuilder {
 		}
 	}
 	
+	public ConverterParaExtensoBuilder negativo(boolean isNegativo) {
+		this.isNegativo = isNegativo;
+		return this;
+	}
+	
 	public String converter() {		
 		processarExcessoes();
 		String milhar = converterMilhares.converter();
 		String dezena = converterDezenas.converter();
 		String centena = converterCentenas.converter();
 		String unidade = converterUnidades.converter();	
-		String eMilhar = (milhar.isEmpty()?"":" e ");
-		String eCentena = (dezena.isEmpty()&&unidade.isEmpty()?"":" e ");
-		String eDezena = (unidade.isEmpty()?"":" e ");
-		return milhar.concat(eMilhar).concat(centena).concat(eCentena).concat(dezena).concat(eDezena).concat(unidade);
+		String eCentena = (!milhar.isEmpty()&&(!centena.isEmpty()||!dezena.isEmpty()||!unidade.isEmpty())?" e ":"");
+		String eDezena = ((!centena.isEmpty()||!milhar.isEmpty())&&(!dezena.isEmpty()))?" e ":"";
+		String eUnidade = (!unidade.isEmpty())&&(!milhar.isEmpty()||!centena.isEmpty()||!dezena.isEmpty())?" e ":"";
+		String menos = isNegativo?"menos ":"";
+		return menos.concat(milhar).concat(eCentena).concat(centena).concat(eDezena)
+				.concat(dezena).concat(eUnidade).concat(unidade);
 				
 	}
 	
