@@ -22,7 +22,7 @@ public class NumeroPorExtensoController {
 		try {
 			return ResponseEntity.ok(service.retornarVersaoPorExtenso(id));
 		} catch (Exception e) {
-			return ResponseEntity.notFound().build();
+			return ResponseEntity.badRequest().build();
 		}
 	}
 	
