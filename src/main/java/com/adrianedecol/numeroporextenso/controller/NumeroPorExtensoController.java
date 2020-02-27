@@ -17,7 +17,7 @@ public class NumeroPorExtensoController {
 	@Autowired
 	private NumeroPorExtensoService service;
 	
-	@GetMapping("/{id}")
+	@GetMapping("{id}")
 	public ResponseEntity<NumeroPorExtenso> retornarPorExtenso(@PathVariable Long id) {
 		try {
 			return ResponseEntity.ok(service.retornarVersaoPorExtenso(id));
