@@ -64,12 +64,12 @@ public class ConverterParaExtensoBuilder {
 		String dezena = converterDezenas.converter();
 		String centena = converterCentenas.converter();
 		String unidade = converterUnidades.converter();	
-		String eCentena = (!milhar.isEmpty()&&(!centena.isEmpty()||!dezena.isEmpty()||!unidade.isEmpty())?" e ":"");
-		String eDezena = ((!centena.isEmpty()||!milhar.isEmpty())&&(!dezena.isEmpty()))?" e ":"";
-		String eUnidade = (!unidade.isEmpty())&&(!milhar.isEmpty()||!centena.isEmpty()||!dezena.isEmpty())?" e ":"";
+		String eMilhar = (!milhar.isEmpty()&&(!centena.isEmpty()||!dezena.isEmpty()||!unidade.isEmpty())?" e ":"");
+		String eCentena = !centena.isEmpty()&&((!dezena.isEmpty()||!unidade.isEmpty()))?" e ":"";
+		String eDezena = (!dezena.isEmpty()&&!unidade.isEmpty())?" e ":"";
 		String menos = isNegativo?"menos ":"";
-		return menos.concat(milhar).concat(eCentena).concat(centena).concat(eDezena)
-				.concat(dezena).concat(eUnidade).concat(unidade);
+		return menos.concat(milhar).concat(eMilhar).concat(centena).concat(eCentena)
+				.concat(dezena).concat(eDezena).concat(unidade);
 				
 	}
 	
