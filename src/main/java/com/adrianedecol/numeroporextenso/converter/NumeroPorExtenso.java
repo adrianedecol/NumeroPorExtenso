@@ -4,9 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class NumeroPorExtenso {
-
-	private static final long serialVersionUID = 1L;
-
+	
 	private String extenso;
 
 	public String getExtenso() {
