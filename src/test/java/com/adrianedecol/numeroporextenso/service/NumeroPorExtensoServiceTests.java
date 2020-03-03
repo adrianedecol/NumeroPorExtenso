@@ -165,7 +165,7 @@ class NumeroPorExtensoServiceTests {
 	@Test
 	void retornarNumeroSessentaESeteMilEQuinhentosEDezessete() throws Exception {
 		resultado = service.retornarVersaoPorExtenso(67517L);
-		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("sessenta e sete mil e quinhentos e dezesete");
+		assertThat(resultado.getExtenso()).isEqualToIgnoringCase("sessenta e sete mil e quinhentos e dezessete");
 	}
 	
 	@Test

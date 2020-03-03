@@ -9,7 +9,7 @@ package com.adrianedecol.numeroporextenso.converter;
 public interface ConverterParaExtenso {
 	
 	final String[] LISTA_NUMEROS_10_a_19 = {"dez", "onze", "doze", "treze", "quatorze", "quinze", 
-			"dezesseis", "dezesete", "dezoito", "dezenove"};
+			"dezesseis", "dezessete", "dezoito", "dezenove"};
 	final String[] LISTA_DEZENAS = {"dez", "vinte", "trinta", "quarenta", "cinquenta", 
 			"sessenta", "setenta", "oitenta", "noventa"};
 	final String E = " e ";
