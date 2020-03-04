@@ -2,6 +2,8 @@
 
 Projeto que recebe um número no path "/api/", sendo no intervalo de -99999 até 99999 e retorna a versão por extenso do mesmo.
 
+[![CodeFactor](https://www.codefactor.io/repository/github/adrianedecol/numeroporextenso/badge)](https://www.codefactor.io/repository/github/adrianedecol/numeroporextenso)
+
 ## Tecnologias Utilizadas
 
 | # | Para que |
